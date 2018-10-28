@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>PADC Myanmar - Cat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+ <h3> Please click the cat</h3>
+ <ul id="cat-list"></ul>
+ <span id="cat-name"></span> Click Count : <span id="click-count">0</span><br/>
+  <img src="" alt="Cute Cat" id="cat-image">
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script>
+    const cat = 
+     [{
+			name: 'Cat A',
+			clickCount: 0,
+			url: 'https://lh5.ggpht.com/LfjkdmOKkGLvCt-VuRlWGjAjXqTBrPjRsokTNKBtCh8IFPRetGaXIpTQGE2e7ZCUaG2azKNkz38KkbM_emA=s0#w=640&h=454'
+			},
+			{
+			name: 'Cat B',
+			clickCount: 0,
+			url: 'https://lh3.ggpht.com/nlI91wYNCrjjNy5f-S3CmVehIBM4cprx-JFWOztLk7vFlhYuFR6YnxcT446AvxYg4Ab7M1Fy0twaOCWYcUk=s0#w=640&h=426'
+			},
+			{
+			name: 'Cat C',
+			clickCount: 0,
+			url: 'https://lh3.ggpht.com/kixazxoJ2ufl3ACj2I85Xsy-Rfog97BM75ZiLaX02KgeYramAEqlEHqPC3rKqdQj4C1VFnXXryadFs1J9A=s0#w=640&h=496'
+			},
+			{
+			name: 'Cat D',
+			clickCount: 0,
+			url: 'https://d17h27t6h515a5.cloudfront.net/topher/2017/March/58b8af2f_nd001-cat-clicker/nd001-cat-clicker.jpg'
+			},
+			{
+			name: 'Cat E',
+			clickCount: 0,
+			url: 'https://uploads.scratch.mit.edu/users/avatars/1385/1878.png'
+			}];
+    ///get cat name and create li
+ for (let cats of cat){ 	 
+ 	console.log(cats.name);
+ 	 document.querySelector("#cat-list").innerHTML +=`<li>${cats.name}</li>`;
+ }
+ //when button click change Images
+			var catslist=document.querySelectorAll("#cat-list > li");
+			console.log(catslist);
+	for (let catData of catslist) {
+		catData.addEventListener("click", function ()
+		 {
+
+			for (let catValue in cat) {
+			
+				if (cat[catValue].name == catData.innerHTML) {
+					document.querySelector('#cat-image').src = cat[catValue].url;
+					document.querySelector('#cat-name').innerHTML = catData.innerHTML;
+					document.querySelector('#click-count').innerHTML = cat[catValue].clickCount;
+				}
+			}
+		 })
+	}
+
+ 
+		document.querySelector('#cat-image').addEventListener("click", function(event){			
+			for(let catValue in cat) {
+				 if(cat[catValue].url == event.target.src) {
+					
+					cat[catValue].clickCount += 1;
+					console.log(cat[catValue].clickCount);
+					document.querySelector('#click-count').innerHTML = cat[catValue].clickCount;
+				}
+			}
+		});
+ 
+ 
+  </script>
+</body>
+
+</html>
